@@ -1,0 +1,26 @@
+extends ../_template
+block content
+    .wrapper
+        .particles(id="particles-js")
+        header.header
+            h1.header__title.glitch(data-text="В•Д•П•Й") В&#8226;Д&#8226;П&#8226;Й
+        form.form(action="#")
+                canvas(id="canvas").form__noise
+                .form__body
+                    .input.form__input
+                        input(type="text" placeholder="Ваше имя и фамилия" required)
+                    .input.form__input
+                        input(type="email" placeholder="Ваш e-mail" required)
+                    .input.form__input
+                        input(type="text" placeholder="Ваш Instagram / VK" required)
+                    label.form__label(for="age") Вам больше 18?
+                        input(type="checkbox" id="age" required)
+                        span.checkmark
+                    button.form__button(type="submit")
+                        span Зарегистрироваться
+                .form__preloader
+                .form__success
+                    p Вы зарегистрированы!
+                    p Мы выслали Вам подтверждение, обязательно проверьте Вашу почту!
+                    p Если письмо не пришло, проверьте в папке «спам».
+                    p Возникли вопросы? Пишите <a href="https://vk.com/h1ghspire" target="_blank">мне<a>    
