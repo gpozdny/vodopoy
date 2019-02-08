@@ -1,17 +1,42 @@
 .form {
     padding: 15px 25px;
-    width: 70vh;
-    max-width: 400px;
+    width: 70vw;
+    max-width: 450px;
     // background-color: #fff;
     border-radius: 20px;
     z-index: 9;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -55%);
 
     @include phones {
-        max-width: 300px;
+        width: 300px;
+        padding: 15px 20px;
+    }
+
+    &.loaded {
+        .form__success {
+            pointer-events: all;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        .form__body {
+            opacity: 0;
+            pointer-events: none;
+        }
+    }
+
+    &.error {
+        .form__error {
+            pointer-events: all;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        .form__body {
+            opacity: 0;
+            pointer-events: none;
+        }
     }
 
     &__body {
@@ -23,12 +48,16 @@
         z-index: 2;
         background-color: black;
         border-radius: 20px;
-        padding: 20px 0;
+        padding: 20px 40px;
+        transition: all 0.3s;
+        @include phones {
+            padding: 20px 30px;
+        }
     }
 
     &__input {
 
-        width: 80%;
+        width: 100%;
 
         input {
             width: 100%;
@@ -67,7 +96,7 @@
         z-index: 2;
     }
 
-    &__success {
+    &__success, &__error {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -75,6 +104,31 @@
         opacity: 0;
         pointer-events: none;
         z-index: 2;
+        color: white;
+        font-family: 'light';
+        text-align: center;
+        background-color: #000;
+        border-radius: 20px;
+        padding: 20px 25px;
+        font-size: 20px;
+        width: 90%;
+        transition: all .3s ease-in;
+        transition-delay: 0.2s;
+        transform: translate(-50%, -45%);
+        transform-origin: center;
+        @include phones {
+            font-size: 16px;
+        }
+
+        p + p {
+            margin-top: 10px;
+        }
+
+        a {
+            display: inline;
+            color: #fff;
+            border-bottom: 1px dashed white;
+        }
     }
 
     &__input+&__input {
@@ -94,7 +148,7 @@
     &__button {
         border: 1px solid white;
         position: relative;
-        margin: 15px 0 0 0;
+        margin: 20px 0 0 0;
         padding: 5px 0;
         width: auto;
         overflow: hidden;
@@ -152,7 +206,7 @@
     align-items: center;
     position: relative;
     font-family: 'light';
-    font-size: 18px;
+    font-size: 14px;
     padding-right: 35px;
     color: white;
     margin-top: 15px;
@@ -161,7 +215,32 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    height: 35px;
+    width: 100%;
+    // height: 35px;
+
+    @include phones {
+        justify-content: flex-start;
+    }
+
+    @include tablets {
+        justify-content: flex-start;
+    }
+
+    @include phones {
+        font-size: 12px;
+        margin-top: 20px;
+    }
+
+    &--agreement {
+        
+        margin-top: 10px;
+        @include phones {
+            margin-top: 15px;
+        }
+        
+    }
+
+    
 }
 
 /* Customize the label (the container) */
@@ -181,10 +260,14 @@
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     background-color: #eee;
     transition: background-color 0.3s;
+
+    &--age {
+        
+    }
 }
 
 /* On mouse-over, add a grey background color */
@@ -212,8 +295,8 @@
 
 /* Style the checkmark/indicator */
 .form__label .checkmark:after {
-    left: 8px;
-    top: 2px;
+    left: 5px;
+    top: 0px;
     width: 5px;
     height: 15px;
     border: solid black;

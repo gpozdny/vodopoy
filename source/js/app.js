@@ -22,4 +22,20 @@ $(document).ready(function () {
 
     let stream = whiteNoise().captureStream();
     // video.srcObject = stream;
+
+    //form 
+
+    $('#form').submit(function(){
+
+        $.ajax({
+            type: "POST",
+            url: "mail.php",
+            data: $(this).serialize()
+        }).done(function(){
+            $('#form').addClass('loaded');
+        }).fail(function(){
+            $('#form').addClass('error');
+        });
+        return false
+    })
 });
